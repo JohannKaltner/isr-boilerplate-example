@@ -1,7 +1,12 @@
 // lib/contentful.js
 
 import { createClient } from "contentful";
-
+interface Posts {
+  blogTitle: string;
+  postId: string;
+  author: string;
+  post: string;
+}
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE as string, // Your Space ID
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string, // Your Access Token
@@ -10,17 +15,22 @@ const client = createClient({
 
 export async function fetchEntries(contentType: string) {
   const entries = await client.getEntries<{
-    fields: {
-      blogTitle: string;
-      author: string;
-      post: string;
-    };
+    fields: Posts;
     contentTypeId: string;
   }>({
     content_type: contentType
   });
 
   return entries.items;
+}
+
+export async function fetchEntry(id: string) {
+  const entry = await client.getEntry<{
+    fields: Posts;
+    contentTypeId: string;
+  }>(id);
+
+  return entry;
 }
 
 export default client;
