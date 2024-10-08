@@ -1,13 +1,22 @@
 import { fetchEntries } from "@/contentful/client";
+import { Entry, EntrySkeletonType } from "contentful";
 
 // pages/index.js
 export default async function HomePage() {
   const posts = await fetchEntries("blogpost");
   console.log(posts);
+  interface posts {
+    fields: {
+      blogTitle: string;
+      author: string;
+      post: string;
+    };
+  }
+
   return (
     <div>
       <h1>hello</h1>
-      {posts?.map(({ fields }: any) => (
+      {posts?.map(({ fields }) => (
         <div key={fields.author}>
           <h2>{fields.blogTitle}</h2>
           <small>{fields.author}</small>
