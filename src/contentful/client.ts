@@ -1,6 +1,6 @@
 // lib/contentful.js
 
-import { Entry, createClient } from "contentful";
+import { createClient } from "contentful";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE as string, // Your Space ID

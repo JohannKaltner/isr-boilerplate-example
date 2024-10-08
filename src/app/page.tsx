@@ -1,5 +1,4 @@
 import { fetchEntries } from "@/contentful/client";
-import { Entry, EntrySkeletonType } from "contentful";
 
 // pages/index.js
 export default async function HomePage() {
