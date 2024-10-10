@@ -1,4 +1,4 @@
-import { fetchEntries, fetchEntry } from "@/contentful/client";
+import { fetchEntries, fetchEntry } from "../../../contentful/client";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -8,7 +8,7 @@ type Params = {
   };
 };
 
-export const revalidate = 60;
+export const revalidate = false;
 
 export default async function BlogPage({ params: { postId } }: Params) {
   const entry = await fetchEntry(postId);

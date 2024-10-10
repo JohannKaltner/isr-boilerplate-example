@@ -8,9 +8,9 @@ interface Posts {
   post: string;
 }
 const client = createClient({
-  space: process.env.CONTENTFUL_SPACE as string, // Your Space ID
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string, // Your Access Token
-  environment: process.env.CONTENTFUL_ENVIRONMENT as string
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE as string, // Your Space ID
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN as string, // Your Access Token
+  environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT as string
 });
 
 export async function fetchEntries(contentType: string) {
